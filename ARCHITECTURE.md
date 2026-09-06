@@ -1,5 +1,7 @@
 # AURIX Architecture
 
+This repository implements the local evaluation architecture for the AURIX prototype. It is not a production deployment topology and does not represent a live brokerage or banking environment.
+
 ```mermaid
 flowchart TD
     U[User Browser] --> FE[Next.js / React Frontend]
@@ -12,7 +14,7 @@ flowchart TD
     API --> INSIGHT[Rule-Based Insight Service]
     INV --> AUDIT[Audit Service]
     AUTH --> AUDIT
-    API --> DB[(PostgreSQL / Neon)]
+    API --> DB[(PostgreSQL)]
     ELIG --> DB
     PORT --> DB
     INV --> DB

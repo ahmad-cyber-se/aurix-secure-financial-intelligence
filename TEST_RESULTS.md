@@ -1,11 +1,15 @@
 # Test Results
 
-Last local verification:
+Last local verification in the project virtual environment:
 
 ```text
 ............                                                             [100%]
-12 passed in 0.79s
+12 passed, 2 warnings in 1.65s
 ```
+
+Warnings observed:
+
+- Deprecation warnings from the FastAPI/Starlette test client stack; no test failures.
 
 Coverage represented by the test suite:
 
@@ -29,5 +33,6 @@ Run locally:
 
 ```bash
 cd backend
+. .venv/bin/activate
 PYTHONPATH=. pytest -q ../tests
 ```

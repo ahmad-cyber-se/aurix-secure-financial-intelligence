@@ -1,8 +1,10 @@
 # HOPn / AURIX — Secure Financial Intelligence Prototype
 
-A 24-hour technical evaluation MVP implementing the requested AURIX architecture using **Python/FastAPI**, **PostgreSQL**, **React/Next.js**, **JWT authentication**, **OpenAPI/Swagger**, **automated tests**, and **Docker Compose**.
+A local evaluation MVP implementing the requested AURIX architecture using **Python/FastAPI**, **PostgreSQL**, **React/Next.js**, **JWT authentication**, **OpenAPI/Swagger**, **automated tests**, and **Docker Compose**.
 
 > **Simulation only:** No real funds, securities, brokerage, payment rail, custody service, or live market feed is connected. The financial insight endpoint is deterministic and rule-based.
+
+This repository is intended for local demo and evaluation use only; it does not include a live production deployment or hosted fintech environment.
 
 ## 1. Project overview
 
@@ -71,7 +73,7 @@ Why FastAPI: it matches the requested preferred stack and provides typed request
 
 - PostgreSQL 17
 - Local development: Dockerized PostgreSQL
-- Hosted evaluation option: Neon PostgreSQL
+- This evaluation repo intentionally uses local Docker Compose configuration rather than a production-managed deployment.
 
 The application uses a pooled PostgreSQL URL for normal web traffic and supports a separate direct URL for migrations.
 
@@ -97,7 +99,7 @@ The application uses a pooled PostgreSQL URL for normal web traffic and supports
 
 ## 4. Installation
 
-### Option A — Docker Compose (recommended)
+### Option A — Docker Compose (recommended for the local demo)
 
 Requirements:
 
@@ -128,7 +130,7 @@ Services:
 - Swagger: `http://localhost:8000/docs`
 - OpenAPI JSON: `http://localhost:8000/openapi.json`
 
-### Option B — Run manually
+### Option B — Run manually for local development
 
 Backend:
 

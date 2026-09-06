@@ -9,4 +9,4 @@
 7. Access tokens use a short-lived JWT plus server-side revocation on logout. A production system would add refresh-token rotation, MFA, rate limiting, device/session management, and stronger account recovery controls.
 8. The prototype does not include real-time securities valuation, FX conversion, corporate actions, tax handling, settlement states, or brokerage order lifecycle management.
 9. Audit records demonstrate traceability but are not cryptographically immutable or exported to a dedicated SIEM/WORM system.
-10. Deployment manifests are Docker Compose for the evaluation; production would add CI/CD, secret management, health monitoring, TLS termination, backups, alerts, and environment-specific infrastructure.
+10. Deployment manifests are Docker Compose for the local evaluation; production would add CI/CD, secret management, health monitoring, TLS termination, backups, alerts, and environment-specific infrastructure.
