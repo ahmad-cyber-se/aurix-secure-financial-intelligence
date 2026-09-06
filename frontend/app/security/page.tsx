@@ -1,0 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import AppShell from "../../components/AppShell";
+import { ErrorState, LoadingState } from "../../components/PageState";
+import { api, AuditLog } from "../../lib/api";
+
+export default function SecurityPage(){const [logs,setLogs]=useState<AuditLog[]|null>(null);const [error,setError]=useState("");useEffect(()=>{api<AuditLog[]>("/audit-logs?limit=100").then(setLogs).catch(e=>setError(e.message))},[]);return <AppShell><div className="page"><header className="pageHeader"><div><p className="eyebrow">Security / activity</p><h1>Audit Log</h1><p className="muted">Immutable-style trace of authentication, investment, profile and denied access events.</p></div></header><section className="securityCards"><article><strong>Parameterized ORM</strong><span>SQL injection protection</span></article><article><strong>Argon2 + JWT</strong><span>Authentication controls</span></article><article><strong>Ownership checks</strong><span>IDOR protection</span></article><article><strong>Pydantic</strong><span>Input validation</span></article></section>{error?<ErrorState message={error}/>:!logs?<LoadingState/>:<section className="panel"><div className="tableWrap"><table><thead><tr><th>Timestamp</th><th>Action</th><th>Entity</th><th>IP address</th><th>Result</th></tr></thead><tbody>{logs.map(log=><tr key={log.id}><td>{new Date(log.timestamp).toLocaleString()}</td><td><strong>{log.action}</strong></td><td>{log.entity}</td><td className="mono">{log.ip_address}</td><td><span className={`auditResult ${log.result.toLowerCase()}`}>{log.result}</span></td></tr>)}</tbody></table></div></section>}</div></AppShell>}
