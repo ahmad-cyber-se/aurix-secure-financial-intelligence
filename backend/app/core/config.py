@@ -1,4 +1,5 @@
 from functools import lru_cache
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -17,6 +18,13 @@ class Settings(BaseSettings):
     environment: str = "development"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore", case_sensitive=False)
+
+    @field_validator("database_url", "database_url_migrations", mode="before")
+    @classmethod
+    def use_installed_postgres_driver(cls, value: str | None) -> str | None:
+        if value and value.startswith(("postgresql://", "postgres://")):
+            return value.replace("://", "+psycopg://", 1)
+        return value
 
     @property
     def cors_origin_list(self) -> list[str]:
